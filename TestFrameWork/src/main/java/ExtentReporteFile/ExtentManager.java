@@ -16,12 +16,12 @@ public class ExtentManager {
         String path = directory + fileName;
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(path);
         htmlReporter.config().setEncoding("uft-8");
-        htmlReporter.config().setDocumentTitle("CT Automation Suite Results");
-        htmlReporter.config().setReportName("CT Test Results");
+        htmlReporter.config().setDocumentTitle("NB Automation Suite Results");
+        htmlReporter.config().setReportName("NB Test Results");
         htmlReporter.config().setTheme(Theme.DARK);
 
         extent = new ExtentReports();
-        extent.setSystemInfo("CleverTap DashBoard","Automation Run Result");
+        extent.setSystemInfo("NoBroker DashBoard","Automation Run Result");
         extent.setSystemInfo("Browser","Chrome");
         extent.setSystemInfo("Run By",System.getProperty("user.name").toUpperCase());
         extent.setSystemInfo("OS Info",System.getProperty("os.name").toUpperCase());
