@@ -38,12 +38,12 @@ public class NoBrokerTest extends BaseTest {
     @Test(description = "Select Bangalore City and add 'Marathahalli' and 'HSR Layout' localities.",priority = 2)
     public void CityPlaceSelection() throws Throwable{
         NBL.CitySelectionDropDown.click();
-
+        Thread.sleep(2000);
         MobileElement CitySearch = (MobileElement) apmdriver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable("
                 + "new UiSelector().scrollable(true)).scrollIntoView("
                 + "new UiSelector().textContains(\"Bangalore\"));"));
         CitySearch.click();
-
+        Thread.sleep(2000);
         MobileElement searchBox = NBL.LocalitySearch;
         ac.moveToElement(searchBox).sendKeys("Marathahalli").build().perform();
         Thread.sleep(5000);
