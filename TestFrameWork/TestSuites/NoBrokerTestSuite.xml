@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Automation Suite" parallel="false">
+
+
+    <!--<listeners>
+        <listener class-name="ExtentReporteFile.TestListeners"></listener>
+        &lt;!&ndash;  <listener class-name="ES_Settings.ExecutionListener"></listener>&ndash;&gt;
+    </listeners>-->
+
+    <test name="NoBroker Android Application Test Execution Flow.">
+        <classes>
+            <class name="TestFrame.NoBrokerTest"/>
+        </classes>
+    </test>
+
+
+    <!-- Test -->
+</suite> <!-- Suite -->
