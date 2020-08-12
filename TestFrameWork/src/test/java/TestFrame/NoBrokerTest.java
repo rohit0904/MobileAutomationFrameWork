@@ -13,8 +13,8 @@ import java.util.concurrent.TimeUnit;
 public class NoBrokerTest extends BaseTest {
     public ApplicationLocators NBL;
 
-    @Test(description = "Launch and Land on NoBroker Home Page.",priority = 0)
-    public void LaunchApplication() throws Throwable {
+    @Test(description = "NoBroker Application For Search for Property and Submit Feedback for Wrong Information.")
+    public void NoBrokerFeedBackTest() throws Throwable {
         NBL = new ApplicationLocators(apmdriver);
         apmdriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         NBL.ContinueButton.click();
@@ -25,18 +25,14 @@ public class NoBrokerTest extends BaseTest {
         Thread.sleep(1000);
         apmdriver.switchTo().alert().accept();
         System.out.println("Launch NoBroker App and Land on the Home Page.");
-    }
 
-    @Test(description = "Successfully Landed on Buy option and click to Search.",priority = 1)
-    public void BuySearchOption() throws Throwable{
+        //Step-2
         NBL.GoToBuyTab.click();
         MobileElement searchField = NBL.SearchBox;
         ac.moveToElement(searchField).click().build().perform();
         System.out.println("Select ‘Buy’ property related option and Click on the ‘Search’ related box.");
-    }
 
-    @Test(description = "Select Bangalore City and add 'Marathahalli' and 'HSR Layout' localities.",priority = 2)
-    public void CityPlaceSelection() throws Throwable{
+        //Step-3
         NBL.CitySelectionDropDown.click();
         Thread.sleep(2000);
         MobileElement CitySearch = (MobileElement) apmdriver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable("
@@ -54,10 +50,7 @@ public class NoBrokerTest extends BaseTest {
         ac.sendKeys(Keys.ARROW_DOWN,Keys.ENTER).build().perform();
         System.out.println("Click on the Search Box bar and select two localities(Marathahalli and HSR Layout from the Autosuggestion locality dropdown.");
 
-    }
-
-    @Test(description = "Select NearBy option, add flat size and Click on search button.",priority = 3)
-    public void NearByCheckBoxSelection()throws Throwable{
+        //Step-4
         try {
             NBL.NearByCheckBox.click();
             Thread.sleep(1000);
@@ -70,12 +63,9 @@ public class NoBrokerTest extends BaseTest {
         }
         NBL.SearchButton.click();
         Thread.sleep(8000);
-    }
 
-    @Test(description = "Select 4th value from the search result.",priority = 4)
-    public void SelectFourthValue()throws Throwable{
-
-        MobileElement CitySearch = (MobileElement) apmdriver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable("
+        //Step-5
+        MobileElement CitySearch1 = (MobileElement) apmdriver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable("
                 + "new UiSelector().scrollable(true)).scrollIntoView("
                 + "new UiSelector().textContains(\"CHECK LOAN ELIGIBILITY\"));"));
 
@@ -83,18 +73,14 @@ public class NoBrokerTest extends BaseTest {
         Place.get(1).click();
         System.out.println("Scroll down on the Property listing page and click on the 4th property.");
 
-    }
-
-    @Test(description = "Scroll and Select wrongInfo button.",priority = 5)
-    public void WrongInfoSelection()throws Throwable{
+        //Step-6
          dimension = NBL.PropertyDetailTab.getSize();
 
-         ScrollSystem("up");
+         ScrollSystem("up",10);
          NBL.WrongInfoButton.click();
-    }
+        System.out.println("Launch NoBroker App and Land on the Home Page.");
 
-    @Test(description = "Login to NoBroker Application.",priority = 6)
-    public void LoginToApplication()throws Throwable{
+         //Step-7
         NBL.UserName.sendKeys("1237567899");
         Thread.sleep(1000);
         apmdriver.navigate().back();
@@ -105,24 +91,20 @@ public class NoBrokerTest extends BaseTest {
         Thread.sleep(1000);
         NBL.SignInButton.click();
         Thread.sleep(5000);
+        System.out.println("Login Successfully in NoBroker Application.");
 
-    }
-
-    @Test(description = "Select What's wrong options from the given options and click on Report.",priority = 7)
-    public void WhatsWrongCheckboxes()throws Throwable{
-
-            List<MobileElement> WhatsWrongChecks = NBL.WrongInfoFields;
-            System.out.println("COUNT LOGS:- "+WhatsWrongChecks.size());
-            for (int i=0;i<WhatsWrongChecks.size();i++){
-                WhatsWrongChecks.get(i).click();
-                Thread.sleep(1000);
-            }
+        //Step-8
+        List<MobileElement> WhatsWrongChecks = NBL.WrongInfoFields;
+        System.out.println("COUNT LOGS:- "+WhatsWrongChecks.size());
+        for (int i=0;i<WhatsWrongChecks.size();i++){
+            WhatsWrongChecks.get(i).click();
+            Thread.sleep(1000);
+        }
         NBL.ReportButton.click();
         Thread.sleep(3000);
-    }
+        System.out.println("Select All Checkboxes for incorrect info.");
 
-    @Test(description = "Change the Configurations, add Feedback and Save the details.",priority = 8)
-    public void ChangeCorrectConfiguration()throws Throwable{
+        //Step-9
         MobileElement AddBHKDetails = (MobileElement) apmdriver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable("
                 + "new UiSelector().scrollable(true)).scrollIntoView("
                 + "new UiSelector().textContains(\"What is the correct configuration?\"));"));
