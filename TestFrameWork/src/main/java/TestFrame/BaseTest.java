@@ -80,8 +80,8 @@ public class BaseTest {
 
     }
 
-    public void ScrollSystem(String direction)throws Throwable{
-        for (int i=0;i<=10;i++) {
+    public void ScrollSystem(String direction,int k)throws Throwable{
+        for (int i=0;i<=k;i++) {
             x = dimension.getWidth()/2;
             Starty=0;
             Endy=0;
